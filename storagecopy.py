@@ -14,17 +14,17 @@ from utils.copyutil import(
 )
 
 # Source URI is storage file we want to move to another storage location 
-SOURCE_URI = "https://segyshare.file.core.windows.net/largedata/zgy/psdn11_TbsdmF_Far_Nov_11_8bit.zgy?sv=2021-06-08&ss=bfqt&srt=co&sp=rwdlacupiytfx&se=2022-08-17T21:44:08Z&st=2022-08-17T13:44:08Z&spr=https&sig=%2FQKY3X1jXlOoo2FtR4ZpntWFqL7fE4a%2FpEkug3XhcmQ%3D"
+SOURCE_URI = "https://ACCOUNT.file.core.windows.net/CONTAINER/PATH1/EXISTING_FILE?SAS_TOKEN"
 
 
 # Identify the EXACT blob to create in the destination
-BLOB_DESTINATION_URI = "https://3rvnd4iqs6x4y.blob.core.windows.net/testcontainer/test_norway.zip?sp=racwdli&st=2022-08-17T14:34:18Z&se=2022-08-17T22:34:18Z&spr=https&sv=2021-06-08&sr=c&sig=1QpLyd9Hiu%2B4YGyygaL7%2BNEFgpoZaL8WH%2BSZsVwuBnQ%3D"
+BLOB_DESTINATION_URI = "https://ACCOUNT.file.core.windows.net/CONTAINER/PATH1/FILE_TO_CREATE?SAS_TOKEN"
 # Identify only the folder to move, default file name is "0"
-CONTAINER_DESTINATION_URI = "https://3rvnd4iqs6x4y.blob.core.windows.net/testcontainer?sp=racwdli&st=2022-08-17T14:34:18Z&se=2022-08-17T22:34:18Z&spr=https&sv=2021-06-08&sr=c&sig=1QpLyd9Hiu%2B4YGyygaL7%2BNEFgpoZaL8WH%2BSZsVwuBnQ%3D"
+CONTAINER_DESTINATION_URI = "https://ACCOUNT.file.core.windows.net/CONTAINER?SAS_TOKEN"
 
 SOURCES = [
     SOURCE_URI,
-    "Y:\\segy\\norway.zip"
+    "path\\to\\local\\file"
 ]
 SOURCE_SELECTOR = 0
 
