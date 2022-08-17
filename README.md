@@ -1,0 +1,2 @@
+# azure-storage-move
+move
