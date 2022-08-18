@@ -70,12 +70,15 @@ class BlobCopyUtil:
 
         self.container_client:ContainerClient = None
 
-    def copy_to_blob(self, scan_delay:int = 10) -> bool:
+    def copy_to_blob(self, scan_delay:int = 10, default_client = "0") -> bool:
         """
         Actual copy operation, it will (currently) print out it's status. 
 
         Parameters:
-        scan_delay: Seconds between each recording of the state of the copy. 
+        scan_delay: Seconds between each recording of the state of the copy, only used 
+            with storage to storage copy.
+        default_client: Default blob name to create when copying local file to storage
+            mimic what was already done in SDUTILS 
         """
 
         return_value = False
@@ -85,7 +88,7 @@ class BlobCopyUtil:
         if self.destination_stg.get_remaining_time() <= 0:
             raise TimeoutError("Destination SAS token has timed out!")
 
-        with self._get_blob_client() as blob_client:
+        with self._get_blob_client(default_client=default_client) as blob_client:
 
             try:
                 if isinstance(self.source, FilePath):

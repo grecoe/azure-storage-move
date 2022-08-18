@@ -2,19 +2,19 @@
 
 There are many options for moving data into an Azure storage account. If you are looking for bulk uploading then your first look should be at [azcopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10). 
 
-However, there are times when the movement can be user initiated and must be a little more flexible. 
+However, there are times when data movement needs to occur during a workflow and azcopy is not available. 
 
 The Python code in this repository is for just such a case. Let's suppose you have an application in which the user can choose to move a file into or around Azure storage that is either:
 
 1. A file local to their machine (including mapped File Shares)
 2. A file stored in an Azure Blob or File Share location
 
-They would like to move it by identifying one of the following:
+The workflow will copy an above identified file into either:
 
 1. A specific Azure Blob URI
 2. A URI that identifies just a container within an Azure Blob Storage account. 
 
-This example can be summed up with this image. See storagecopy.py for a working example. 
+This flow can be summed up with this image. See storagecopy.py for a working example. 
 
 
 ![image](./images/design.jpg)

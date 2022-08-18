@@ -42,11 +42,15 @@ DESTINATION_SELECTOR = 0
 ##############################################################
 
 
-# Destination URI can be either a full blob or container
+# Destination URI can be either a full blob or container, this is what is configured
+# in the tool to begin with.
 destination_uri = BlobUri(DESTINATIONS[DESTINATION_SELECTOR])
-# Source can be either a local file or a SAS tokenized blob URI
+# Source can be either a local file or a SAS tokenized blob URI. Currently the tool is 
+# expecting a local file, but we can support a move of a file. 
 source_location = SOURCES[SOURCE_SELECTOR]
 
+# Within the tool, we can determine if it's local or not on the fly and create the 
+# appropriate object for source.
 source = None
 try:
     # Throws a ValueError if not a valid SAS tokenized blob URI
@@ -55,5 +59,6 @@ except ValueError as ve:
     # If this also throws a ValueError it's totally invalid
     source = FilePath(source_location)
 
+# Create the copy utility and finally copy source to destination 
 copy_util = BlobCopyUtil(source, destination_uri) 
 copy_util.copy_to_blob()
