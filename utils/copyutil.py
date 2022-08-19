@@ -92,8 +92,10 @@ class BlobCopyUtil:
 
             try:
                 if isinstance(self.source, FilePath):
+                    print("Copy Source is a file: {}".format(self.source.file_name))
                     return_value = self._disk_to_storage_copy(blob_client)
                 elif isinstance(self.source, BlobUri):
+                    print("Copy Source is a storage file:\n\t{}".format(self.source.uri))
                     return_value = self._storage_to_storage_copy(blob_client, scan_delay)
                 else:
                     raise ValueError("Source is incompatible type.")
@@ -205,6 +207,7 @@ class BlobCopyUtil:
         return_client:BlobClient = None
 
         if self.destination_stg.is_container():
+            print("Destination is an Azure Storage Container URI\n\t{}".format(self.destination_stg.uri))
             self.container_client = ContainerClient.from_container_url(container_url=self.destination_stg.uri,
                                                     max_block_size=_maxBlockSize,
                                                     use_byte_buffer=True,
@@ -214,6 +217,7 @@ class BlobCopyUtil:
 
             return_client = self.container_client.get_blob_client(default_client)
         else:
+            print("Destination is an Azure Blob URI\n\t{}".format(self.destination_stg.uri))
             return_client = BlobClient.from_blob_url(self.destination_stg.uri)
 
         return return_client
