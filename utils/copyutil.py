@@ -3,6 +3,7 @@ Copy util used for moving files to Azure Storage
 """
 
 
+from email.policy import default
 import typing
 import time
 import sys
@@ -215,6 +216,7 @@ class BlobCopyUtil:
                                                     max_single_put_size=_max_single_put_size,
                                                     connection_timeout=100)
 
+            print("Blob to create: {}".format(default_client))
             return_client = self.container_client.get_blob_client(default_client)
         else:
             print("Destination is an Azure Blob URI\n\t{}".format(self.destination_stg.uri))
