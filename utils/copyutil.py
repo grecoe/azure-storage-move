@@ -111,6 +111,9 @@ class BlobCopyUtil:
 
 
     def _disk_to_storage_copy(self, blob_client:BlobClient) -> bool:
+        """
+        Copy a local file to an online (Azure) Blob Storage account.
+        """
         if not isinstance(self.source, FilePath):
             raise ValueError("_disk_to_storage_copy - source is not a FilePath")
 
@@ -146,7 +149,10 @@ class BlobCopyUtil:
         return True
 
     def _storage_to_storage_copy(self, blob_client:BlobClient, scan_delay:int = 10) -> bool:
-
+        """
+        Copy from one online (Azure) storage location to another online (Azure) storage
+        location. 
+        """
         if not isinstance(self.source, BlobUri):
             raise ValueError("_storage_to_storage_copy - source is not a BlobUri")
 

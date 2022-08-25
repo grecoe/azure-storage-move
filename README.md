@@ -31,4 +31,10 @@ This flow can be summed up with this image. See storagecopy.py for a working exa
 
 > <b> NOTE: </b> You might be wondering why you need SAS tokens on your Azure Storage URI's. It's simply because the source does not use any Azure Identity to accomplish the move, it relies solely on the authorization in the SAS token. 
 
+# Applications
 
+## storagecopy.py
+Copy a file either locally or from an Azure Storage account to an Azure Storage account. You will need to modify the file to supply appropriate file paths and/or SAS tokenized URI's to storage locations. 
+
+## storagesastest.py
+Used to show how the BlobURI class can be used to parse out a SAS tokenized Azure Blob URI and determine if it's still valid. 
